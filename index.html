@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wings of Change Consulting</title>
+  <meta name="description" content="Grant writing, training, and consulting services. Online courses and webinars to fund and scale your mission." />
+  <style>
+    :root {
+      --primary: #003c66;   /* deep blue */
+      --secondary: #006cb7; /* bright blue */
+      --accent: #62bb46;    /* green accent */
+      --text: #0f172a;      /* slate-900 */
+      --muted: #475569;     /* slate-600 */
+      --bg: #ffffff;
+      --card: #f8fafc;      /* slate-50 */
+      --radius: 16px;
+    }
+
+    /* CSS Reset-ish */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
+    a { color: var(--secondary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* Layout helpers */
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+    .grid { display: grid; gap: 1.25rem; }
+
+    /* Top Bar */
+    header { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid #e2e8f0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .85rem 0; }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 800; letter-spacing: .2px; color: var(--primary); }
+    .brand .logo { width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; font-weight: 800; }
+    nav a { margin-left: 1rem; font-weight: 600; color: var(--muted); }
+    nav a:hover { color: var(--secondary); }
+
+    /* Hero */
+    .hero { background: radial-gradient(1000px 600px at 100% -100%, rgba(0,108,183,.12), transparent 60%),
+             radial-gradient(800px 500px at -50% 0%, rgba(0,60,102,.12), transparent 60%);
+             padding: 3.5rem 0 2.75rem; }
+    .hero .content { display: grid; gap: 1.25rem; }
+    .kicker { color: var(--secondary); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .82rem; }
+    h1 { font-size: clamp(1.8rem, 2.5vw + 1.2rem, 3rem); line-height: 1.1; margin: .25rem 0; color: var(--primary); }
+    .lead { font-size: clamp(1rem, .4vw + .9rem, 1.2rem); color: var(--muted); max-width: 70ch; }
+
+    .actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; border: 2px solid transparent; border-radius: 999px; padding: .75rem 1rem; font-weight: 700; }
+    .btn.primary { background: var(--primary); color: white; }
+    .btn.primary:hover { background: var(--secondary); }
+    .btn.ghost { border-color: #cbd5e1; color: var(--text); background: white; }
+    .btn.ghost:hover { border-color: var(--secondary); color: var(--secondary); }
+
+    /* Sections */
+    section { padding: 3rem 0; }
+    .section-title { font-size: clamp(1.4rem, .8vw + 1rem, 2rem); color: var(--primary); margin: 0 0 .75rem; }
+    .section-lead { color: var(--muted); max-width: 70ch; margin-bottom: 1.5rem; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .card { background: var(--card); border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 1rem; display: grid; gap: .5rem; }
+    .card h3 { margin: 0; font-size: 1.1rem; color: var(--text); }
+    .pill { display: inline-block; font-size: .75rem; font-weight: 700; color: white; background: var(--accent); padding: .35rem .6rem; border-radius: 999px; }
+
+    /* Courses */
+    .course-card .meta { color: var(--muted); font-size: .9rem; }
+
+    /* Testimonials */
+    .quote { font-style: italic; color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid #e2e8f0; padding: 2rem 0; color: var(--muted); font-size: .95rem; }
+
+    /* Responsive nav (simple) */
+    @media (max-width: 740px) {
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo">W</span>
+        <span>Wings of Change Consulting</span>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#courses">Courses</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container content">
+        <div class="kicker">Grant Writing • Training • Consulting</div>
+        <h1>Secure Funding. Build Capacity. <br/>Scale Your Impact.</h1>
+        <p class="lead">I help education organizations and nonprofits win grants, design trauma‑informed workforce programs, and build sustainable systems. Learn through live webinars and self‑paced courses or book consulting to accelerate results.</p>
+        <div class="actions">
+          <a class="btn primary" href="#courses">Browse Courses</a>
+          <a class="btn ghost" href="#contact">Book a Free Consult</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <p class="section-lead">High‑leverage support tailored to your mission and timelines.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Grant Strategy Intensive</h3>
+            <p>90‑minute strategy session to define funder fit, timelines, and a winning outline. Leave with a 30‑day action plan.</p>
+            <span class="pill">Popular</span>
+          </article>
+          <article class="card">
+            <h3>Proposal Writing & Review</h3>
+            <p>End‑to‑end proposal development or expert tune‑ups with logic models, outcomes, and budgets dialed in.</p>
+          </article>
+          <article class="card">
+            <h3>Training & Workshops</h3>
+            <p>Live or virtual sessions on CLNA/Perkins V, trauma‑informed design, and grant readiness for teams.</p>
+          </article>
+          <article class="card">
+            <h3>Consulting Packages</h3>
+            <p>Monthly support for pipeline building, review cycles, and grant systems—so you keep momentum.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="container">
+        <h2 class="section-title">Courses</h2>
+        <p class="section-lead">Self‑paced learning you can start today. Host on Payhip/Thinkific—or link directly here when ready.</p>
+        <div class="cards">
+          <article class="card course-card">
+            <h3>Intro to Grant Writing</h3>
+            <p class="meta">2 hours • Templates + checklists</p>
+            <p>Fundamentals of problem statements, outcomes, budgets, and narratives—the essentials done right.</p>
+            <div class="actions">
+              <a class="btn primary" href="#">Buy &raquo;</a>
+              <a class="btn ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+          <article class="card course-card">
+            <h3>Trauma‑Informed Program Design</h3>
+            <p class="meta">3 hours • CLNA/Perkins V aligned</p>
+            <p>Design programs that work for special populations and reviewers. Practical frameworks and examples.</p>
+            <div class="actions">
+              <a class="btn primary" href="#">Buy &raquo;</a>
+              <a class="btn ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+          <article class="card course-card">
+            <h3>Grant Systems & Workflow</h3>
+            <p class="meta">2.5 hours • Notion/Teams templates</p>
+            <p>Create a repeatable pipeline: prospecting, templates, review cadence, and reporting.</p>
+            <div class="actions">
+              <a class="btn primary" href="#">Buy &raquo;</a>
+              <a class="btn ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="webinars">
+      <div class="container">
+        <h2 class="section-title">Webinars</h2>
+        <p class="section-lead">Live sessions with Q&A. Replace links with your Zoom/Meet or Payhip checkout.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>From Compliance to Clarity: Making Sense of the CLNA</h3>
+            <p class="meta">Thu • 12:00–1:30 PM CT • Zoom</p>
+            <p>Walk through a reviewer’s lens and leave with a one‑page CLNA improvement plan.</p>
+            <a class="btn primary" href="#">Register</a>
+          </article>
+          <article class="card">
+            <h3>Grant Budgeting Without Tears</h3>
+            <p class="meta">Tue • 11:00–12:30 PM CT • Zoom</p>
+            <p>Align narratives and numbers, avoid pitfalls, and build reviewer confidence.</p>
+            <a class="btn primary" href="#">Register</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="cards">
+          <article class="card">
+            <p class="quote">“We secured our largest award to date—her outline and logic model made the difference.”</p>
+            <p>— Higher Ed Partner</p>
+          </article>
+          <article class="card">
+            <p class="quote">“Clear, practical, and motivating. Our team finally feels confident about grant cycles.”</p>
+            <p>— Nonprofit Director</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-lead">Have a question, want a proposal, or need a custom workshop? Email me and we’ll map your next steps.</p>
+        <div class="card">
+          <p><strong>Email:</strong> <a href="mailto:hello@wingsofchange.org">hello@wingsofchange.org</a> (replace with your address)</p>
+          <p><strong>Calendaring:</strong> Link this to your scheduler when ready.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:hello@wingsofchange.org">Email Me</a>
+            <a class="btn ghost" href="#">Schedule a Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center">
+        <p>© <span id="year"></span> Wings of Change Consulting. All rights reserved.</p>
+        <p><a href="#">Privacy</a> • <a href="#">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
