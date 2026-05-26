@@ -3,225 +3,605 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wings of Change Consulting</title>
-  <meta name="description" content="Grant writing, training, and consulting services. Online courses and webinars to fund and scale your mission." />
+  <title>Grants for Wings of Change</title>
+  <meta name="description" content="Grant writing, training, and consulting support for nonprofits, education organizations, and mission-driven leaders." />
   <style>
     :root {
-      --primary: #003c66;   /* deep blue */
-      --secondary: #006cb7; /* bright blue */
-      --accent: #62bb46;    /* green accent */
-      --text: #0f172a;      /* slate-900 */
-      --muted: #475569;     /* slate-600 */
-      --bg: #ffffff;
-      --card: #f8fafc;      /* slate-50 */
-      --radius: 16px;
+      --navy: #003c66;
+      --blue: #006cb7;
+      --pink: #d63384;
+      --green: #62bb46;
+      --ink: #0f172a;
+      --muted: #475569;
+      --soft-blue: #eaf5ff;
+      --soft-pink: #fbe7f1;
+      --soft-green: #eef8ea;
+      --line: #dbe3ee;
+      --white: #ffffff;
+      --card: #f8fafc;
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .12);
     }
 
-    /* CSS Reset-ish */
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
-    a { color: var(--secondary); text-decoration: none; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
     img { max-width: 100%; display: block; }
 
-    /* Layout helpers */
-    .container { width: min(1100px, 92%); margin-inline: auto; }
-    .grid { display: grid; gap: 1.25rem; }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--navy);
+      color: #fff;
+      padding: .75rem 1rem;
+      z-index: 999;
+    }
+    .skip-link:focus { left: .75rem; top: .75rem; }
 
-    /* Top Bar */
-    header { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid #e2e8f0; }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: .85rem 0; }
-    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 800; letter-spacing: .2px; color: var(--primary); }
-    .brand .logo { width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; font-weight: 800; }
-    nav a { margin-left: 1rem; font-weight: 600; color: var(--muted); }
-    nav a:hover { color: var(--secondary); }
+    .container { width: min(1180px, 92%); margin-inline: auto; }
 
-    /* Hero */
-    .hero { background: radial-gradient(1000px 600px at 100% -100%, rgba(0,108,183,.12), transparent 60%),
-             radial-gradient(800px 500px at -50% 0%, rgba(0,60,102,.12), transparent 60%);
-             padding: 3.5rem 0 2.75rem; }
-    .hero .content { display: grid; gap: 1.25rem; }
-    .kicker { color: var(--secondary); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .82rem; }
-    h1 { font-size: clamp(1.8rem, 2.5vw + 1.2rem, 3rem); line-height: 1.1; margin: .25rem 0; color: var(--primary); }
-    .lead { font-size: clamp(1rem, .4vw + .9rem, 1.2rem); color: var(--muted); max-width: 70ch; }
+    header {
+      background: rgba(255, 255, 255, .97);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
 
-    .actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
-    .btn { display: inline-flex; align-items: center; gap: .5rem; border: 2px solid transparent; border-radius: 999px; padding: .75rem 1rem; font-weight: 700; }
-    .btn.primary { background: var(--primary); color: white; }
-    .btn.primary:hover { background: var(--secondary); }
-    .btn.ghost { border-color: #cbd5e1; color: var(--text); background: white; }
-    .btn.ghost:hover { border-color: var(--secondary); color: var(--secondary); }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      padding: .75rem 0;
+    }
 
-    /* Sections */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      color: var(--navy);
+      font-weight: 900;
+      letter-spacing: .02em;
+      min-width: 250px;
+    }
+
+    .brand img {
+      width: 230px;
+      height: auto;
+      max-height: 76px;
+      object-fit: contain;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.15rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: .92rem;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(0,60,102,.20);
+    }
+    .nav-cta:hover { background: var(--blue); color: #fff; text-decoration: none; }
+
+    .hero {
+      min-height: 520px;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 31%, rgba(255,255,255,.52) 52%, rgba(255,255,255,.15) 100%),
+        linear-gradient(135deg, rgba(0,60,102,.12), rgba(214,51,132,.16)),
+        url('images/grant-desk-hero.jpg');
+      background-size: cover;
+      background-position: center right;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-content {
+      max-width: 520px;
+      padding: 4.25rem 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--pink);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .5rem;
+      font-size: .85rem;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 4.9vw, 5.15rem);
+      line-height: .98;
+      margin: 0 0 1.1rem;
+      letter-spacing: -.04em;
+    }
+
+    .lead {
+      color: var(--ink);
+      font-size: 1.08rem;
+      max-width: 48ch;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.4rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      padding: .78rem 1.08rem;
+      min-height: 44px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: .02em;
+      text-decoration: none;
+    }
+    .btn.primary { background: var(--pink); color: #fff; }
+    .btn.primary:hover { background: #b72a70; color: #fff; text-decoration: none; }
+    .btn.outline { color: var(--pink); border-color: var(--pink); background: #fff; }
+    .btn.outline:hover { background: var(--soft-pink); text-decoration: none; }
+    .btn.blue { background: var(--navy); color: #fff; }
+    .btn.blue:hover { background: var(--blue); color: #fff; text-decoration: none; }
+
     section { padding: 3rem 0; }
-    .section-title { font-size: clamp(1.4rem, .8vw + 1rem, 2rem); color: var(--primary); margin: 0 0 .75rem; }
-    .section-lead { color: var(--muted); max-width: 70ch; margin-bottom: 1.5rem; }
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(1.4rem, 1vw + 1rem, 2rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin: 0 0 .5rem;
+      font-weight: 900;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--green);
+      border-radius: 999px;
+      margin-top: .45rem;
+    }
+    .section-lead { color: var(--muted); max-width: 72ch; margin: 0 0 1.4rem; }
 
-    /* Cards */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-    .card { background: var(--card); border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 1rem; display: grid; gap: .5rem; }
-    .card h3 { margin: 0; font-size: 1.1rem; color: var(--text); }
-    .pill { display: inline-block; font-size: .75rem; font-weight: 700; color: white; background: var(--accent); padding: .35rem .6rem; border-radius: 999px; }
+    .service-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
 
-    /* Courses */
-    .course-card .meta { color: var(--muted); font-size: .9rem; }
+    .service {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 1rem;
+      padding: 1.6rem 1.25rem;
+      border-right: 1px solid var(--line);
+      align-items: center;
+    }
+    .service:last-child { border-right: 0; }
 
-    /* Testimonials */
-    .quote { font-style: italic; color: var(--muted); }
+    .icon-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+      background: var(--soft-blue);
+    }
+    .service:nth-child(1) .icon-circle, .service:nth-child(4) .icon-circle { background: var(--soft-pink); color: var(--pink); }
+    .service:nth-child(2) .icon-circle { background: var(--soft-green); color: #477a28; }
 
-    /* Footer */
-    footer { border-top: 1px solid #e2e8f0; padding: 2rem 0; color: var(--muted); font-size: .95rem; }
+    .service h3 {
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.22rem;
+      line-height: 1.08;
+      margin: 0 0 .35rem;
+    }
+    .service p { margin: 0; color: var(--ink); font-size: .92rem; }
 
-    /* Responsive nav (simple) */
-    @media (max-width: 740px) {
-      nav { display: none; }
+    .three-panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .panel {
+      padding: 1.25rem 1.4rem;
+      border-right: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: minmax(180px, 1.1fr) minmax(140px, .9fr);
+      gap: 1rem;
+      align-items: center;
+    }
+    .panel:last-child { border-right: 0; }
+    .panel img {
+      border-radius: 8px;
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      object-fit: cover;
+      background: var(--card);
+    }
+    .panel h3 {
+      color: var(--navy);
+      margin: 0 0 .5rem;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    .panel h3::after {
+      content: "";
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: var(--green);
+      margin-top: .35rem;
+      border-radius: 99px;
+    }
+    .panel p { color: var(--ink); margin: 0 0 .7rem; font-size: .95rem; }
+
+    .status {
+      display: inline-flex;
+      width: fit-content;
+      color: var(--navy);
+      background: var(--soft-blue);
+      border: 1px solid #b9d9f2;
+      border-radius: 999px;
+      padding: .4rem .65rem;
+      font-weight: 900;
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
+
+    .mission-band {
+      background: linear-gradient(90deg, #ffffff, #f3f9ff);
+      border-top: 1px solid var(--line);
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, .9fr) minmax(300px, 1.35fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .mission-grid img {
+      border-radius: 8px;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+    .mission h2 {
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.9rem;
+      margin: 0 0 .5rem;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .value {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: .75rem;
+      align-items: start;
+    }
+    .value .mini-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      background: var(--blue);
+    }
+    .value:nth-child(2) .mini-icon { background: var(--green); }
+    .value:nth-child(3) .mini-icon { background: var(--pink); }
+    .value h3 { margin: 0; color: var(--navy); font-size: 1rem; }
+    .value p { margin: .2rem 0 0; color: var(--ink); font-size: .88rem; }
+
+    .webinar-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .webinar-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      background: var(--card);
+      display: grid;
+      gap: .55rem;
+      align-content: start;
+    }
+    .webinar-card h3 {
+      color: var(--navy);
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.25;
+    }
+    .meta { color: var(--muted); font-weight: 800; margin: 0; }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #fff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .contact-card h2 { color: #fff; margin-top: 0; }
+    .contact-card a { color: #fff; text-decoration: underline; }
+    .contact-card .btn.outline { background: #fff; color: var(--navy); border-color: #fff; text-decoration: none; }
+
+    footer {
+      background: var(--navy);
+      color: #fff;
+      padding: 1rem 0;
+      font-size: .9rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    footer a { color: #fff; }
+
+    @media (max-width: 1020px) {
+      .service-row { grid-template-columns: repeat(2, 1fr); }
+      .service:nth-child(2) { border-right: 0; }
+      .service:nth-child(1), .service:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .three-panel { grid-template-columns: 1fr; }
+      .panel { border-right: 0; border-bottom: 1px solid var(--line); }
+      .panel:last-child { border-bottom: 0; }
+      .mission-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      header { position: static; }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .brand img { width: 210px; }
+      nav ul { justify-content: flex-start; gap: .85rem; }
+      .hero {
+        background:
+          linear-gradient(90deg, rgba(255,255,255,.97), rgba(255,255,255,.87)),
+          url('images/grant-desk-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: auto;
+      }
+      .hero-content { padding: 3rem 0; }
+      .service-row, .webinar-cards, .value-grid { grid-template-columns: 1fr; }
+      .service { border-right: 0; border-bottom: 1px solid var(--line); }
+      .service:last-child { border-bottom: 0; }
+      .panel { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header>
     <div class="container nav">
-      <div class="brand">
-        <span class="logo">W</span>
-        <span>Wings of Change Consulting</span>
-      </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#courses">Courses</a>
-        <a href="#webinars">Webinars</a>
-        <a href="#contact">Contact</a>
+      <a class="brand" href="#top" aria-label="Grants for Wings of Change home">
+        <img src="Pink_Grants_At_Wings_Of_Change(2).jpg" alt="Grants for Wings of Change logo" />
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#webinars">Webinars</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="nav-cta" href="https://calendly.com/sheri-lu-hutchinson/30min" target="_blank" rel="noopener">Book a Consult</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container content">
-        <div class="kicker">Grant Writing • Training • Consulting</div>
-        <h1>Secure Funding. Build Capacity. <br/>Scale Your Impact.</h1>
-        <p class="lead">We help education organizations and nonprofits research, write and manage grants, design trauma‑informed workforce programs, and build sustainable systems. Learn through live webinars and self‑paced courses or book consulting to accelerate results.</p>
-        <div class="actions">
-          <a class="btn primary" href="#courses">Browse Courses</a>
-          <a class="btn ghost" href="https://calendly.com/sheri-lu-hutchinson/30min">Book a Free 30 Minute Consult</a>
+  <main id="main">
+    <section class="hero" id="top" aria-label="Grants for Wings of Change introduction">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">Grant Writing • Training • Consulting</span>
+          <h1>Secure Funding.<br>Build Capacity.<br>Scale Your Impact.</h1>
+          <p class="lead">We help education organizations and nonprofits research, write, and manage grants, design trauma-informed programs, and build sustainable systems.</p>
+          <div class="actions" aria-label="Primary actions">
+            <a class="btn primary" href="#services">Explore Services</a>
+            <a class="btn outline" href="https://calendly.com/sheri-lu-hutchinson/30min" target="_blank" rel="noopener">Book a Free 30 Minute Consult</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="services" aria-labelledby="services-title">
       <div class="container">
-        <h2 class="section-title">Services</h2>
-        <p class="section-lead">High‑leverage support tailored to your mission and timelines.</p>
-        <div class="cards">
-          <article class="card">
-            <h3>Grant Strategy Intensive</h3>
-            <p>90‑minute strategy session to define funder fit, timelines, and a winning outline. Leave with a 30‑day action plan.</p>
-            <span class="pill">Popular</span>
-          </article>
-          <article class="card">
-            <h3>Proposal Writing & Review</h3>
-            <p>End‑to‑end proposal development or expert tune‑ups with logic models, outcomes, and budgets dialed in.</p>
-          </article>
-          <article class="card">
-            <h3>Training & Workshops</h3>
-            <p>Live or virtual sessions on grant readiness and finding grants.</p>
-          </article>
-          <article class="card">
-            <h3>Consulting Packages</h3>
-            <p>Monthly support for pipeline building, review cycles, and grant systems.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="courses">
-      <div class="container">
-        <h2 class="section-title">Courses</h2>
-        <p class="section-lead">Self‑paced learning.</p>
-        <div class="cards">
-          <article class="card course-card">
-            <h3>Intro to Grant Writing</h3>
-            <p class="meta">2 hours • Templates + checklists</p>
-            <p>Fundamentals of problem statements, outcomes, budgets, and narratives—the essentials done right.</p>
+        <h2 class="section-title" id="services-title">Services</h2>
+        <div class="service-row">
+          <article class="service">
+            <div class="icon-circle" aria-hidden="true">◎</div>
+            <div>
+              <h3>Grant Strategy Intensive</h3>
+              <p>Define funder fit, timelines, and a winning outline with a practical 30-day action plan.</p>
             </div>
           </article>
-          <article class="card course-card">
-            <h3>Trauma‑Informed Program Design</h3>
-            <p class="meta">3 hours • Working with empathy.</p>
-            <p>Design programs that retain employees and make better leaders. Practical frameworks and examples.</p>
+          <article class="service">
+            <div class="icon-circle" aria-hidden="true">▤</div>
+            <div>
+              <h3>Proposal Writing & Review</h3>
+              <p>Proposal development or expert tune-ups focused on clarity, outcomes, budgets, and alignment.</p>
             </div>
           </article>
-          <article class="card course-card">
-            <h3>Grant Systems & Workflow</h3>
-            <p class="meta">2.5 hours • Notion/Teams templates</p>
-            <p>Create a repeatable pipeline: prospecting, templates, review cadence, and reporting.</p>
+          <article class="service">
+            <div class="icon-circle" aria-hidden="true">☷</div>
+            <div>
+              <h3>Training & Workshops</h3>
+              <p>Live or virtual sessions on grant readiness, finding grants, and reviewer-centered writing.</p>
+            </div>
+          </article>
+          <article class="service">
+            <div class="icon-circle" aria-hidden="true">◇</div>
+            <div>
+              <h3>Consulting Packages</h3>
+              <p>Ongoing support for pipeline building, review cycles, document systems, and grant strategy.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="webinars">
+    <section id="courses" aria-labelledby="courses-title">
+      <div class="container three-panel">
+        <article class="panel">
+          <img src="images/online-learning.jpg" alt="Laptop on a desk representing online grant writing courses" />
+          <div>
+            <h2 class="section-title" id="courses-title">Courses</h2>
+            <p>Self-paced learning designed for impact. Courses are in development.</p>
+            <span class="status">Coming Soon</span>
+          </div>
+        </article>
+        <article class="panel" id="webinars" aria-labelledby="webinars-title">
+          <img src="images/webinar-session.jpg" alt="Online webinar meeting displayed on a laptop" />
+          <div>
+            <h2 class="section-title" id="webinars-title">Webinars</h2>
+            <p>Live sessions with Q&amp;A, practical tools, and useful takeaways.</p>
+            <a class="btn outline" href="#webinar-list">View Schedule</a>
+          </div>
+        </article>
+        <article class="panel">
+          <img src="images/funding-plan.jpg" alt="Notebook, charts, and planning documents for grant strategy" />
+          <div>
+            <h2 class="section-title">Funding Plans</h2>
+            <p>Move from scattered ideas to a focused plan that funders can understand.</p>
+            <a class="btn outline" href="#contact">Ask About Support</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="webinar-list" aria-labelledby="webinar-list-title">
       <div class="container">
-        <h2 class="section-title">Webinars</h2>
-        <p class="section-lead">Live sessions with Q&A. TBD.</p>
-        <div class="cards">
-          <article class="card">
-            <h3>Lunch and Learn: From Compliance to Clarity: Making Sense of the Funding for NonProfits</h3>
-            <p class="meta">May 24 • 12:00–1:00 PM CDT </p>
-            <p>Walk through a reviewer’s lens and leave with a one‑page funding improvement plan.</p>
-            <a class="btn primary" href="#">Full-More Coming Soon</a>
+        <h2 class="section-title" id="webinar-list-title">Upcoming Webinars</h2>
+        <p class="section-lead">Registration links can be added when your Google Forms are ready.</p>
+        <div class="webinar-cards">
+          <article class="webinar-card">
+            <h3>From Compliance to Clarity: Making Sense of Funding for Nonprofits</h3>
+            <p class="meta">June session • 12:00–1:00 PM CT • Zoom</p>
+            <p>Walk through a reviewer’s lens and leave with a one-page funding improvement plan.</p>
+            <span class="status">Registration Coming Soon</span>
           </article>
-          <article class="card">
+          <article class="webinar-card">
             <h3>Grant Budgeting Without Tears</h3>
-            <p class="meta">May 31 • 11:00–12:30 PM CT • Zoom</p>
-            <p>Align narratives and numbers, avoid pitfalls, and build reviewer confidence.</p>
-            <a class="btn primary" href="#">Full- More coming soon.</a>
+            <p class="meta">July session • Zoom</p>
+            <p>Align narratives and numbers, avoid common pitfalls, and build reviewer confidence.</p>
+            <span class="status">Registration Coming Soon</span>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="testimonials">
-      <div class="container">
-        <h2 class="section-title">What Clients Say</h2>
-        <div class="cards">
-          <article class="card">
-            <p class="quote">“We secured our seed money for our Trauma Informed Workforce Leadership Development. The Higher Ed consulting and securing the right Instructional Designer helped our new program to success.”</p>
-            <p>— Higher Ed Partner</p>
-          </article>
-          <article class="card">
-            <p class="quote">“Clear, practical, and motivating. Our team finally feels confident about grant cycles.”</p>
-            <p>— Nonprofit Director</p>
-          </article>
+    <section class="mission-band" id="mission" aria-labelledby="mission-title">
+      <div class="container mission-grid">
+        <img src="images/nonprofit-team-meeting.jpg" alt="Nonprofit leaders discussing a funding strategy around a laptop" />
+        <div class="mission">
+          <h2 id="mission-title">Our Mission</h2>
+          <p>Grants for Wings of Change exists to strengthen the capacity of organizations to secure funding, transform lives, and build sustainable impact in their communities.</p>
+          <div class="value-grid">
+            <article class="value">
+              <div class="mini-icon" aria-hidden="true">1</div>
+              <div><h3>People First</h3><p>We center people, access, dignity, and practical support in every plan.</p></div>
+            </article>
+            <article class="value">
+              <div class="mini-icon" aria-hidden="true">2</div>
+              <div><h3>Capacity Building</h3><p>We build systems that create long-term success, not one-time fixes.</p></div>
+            </article>
+            <article class="value">
+              <div class="mini-icon" aria-hidden="true">3</div>
+              <div><h3>Measurable Impact</h3><p>We help you show results that funders can understand and value.</p></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-lead">Have a question, want a proposal, or need a custom workshop? Email me and we’ll map your next steps.</p>
-        <div class="card">
-          <p><strong>Email:</strong> <a href="mailto:grantsSheri@gmail.com">Grants with Sheri</a> </p>
-         <p><strong>Calendaring:</strong> Use my online scheduler to book a time that works for you.</p>
-<div class="actions">
-  <a class="btn primary" href="mailto:grantsheri@gmail.com">Email Me</a>
-  <a class="btn ghost" href="https://calendly.com/sheri-lu-hutchinson/30min" target="_blank">
-    Book a 30-Minute Meeting
-  </a>
-</div>
+        <div class="contact-card">
+          <h2 id="contact-title">Ready to get clear about your next funding step?</h2>
+          <p>Email <a href="mailto:grantsheri@gmail.com">grantsheri@gmail.com</a> or schedule a free 30-minute consultation.</p>
+          <div class="actions">
+            <a class="btn outline" href="mailto:grantsheri@gmail.com">Email Me</a>
+            <a class="btn outline" href="https://calendly.com/sheri-lu-hutchinson/30min" target="_blank" rel="noopener">Book a Meeting</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center">
-        <p>© <span id="year"></span> Wings of Change Consulting. All rights reserved.</p>
-        <p><a href="#">Privacy</a> • <a href="#">Terms</a></p>
-      </div>
+    <div class="container footer-row">
+      <p>© <span id="year"></span> Grants for Wings of Change. All rights reserved.</p>
+      <p>grantsheri@gmail.com &nbsp; | &nbsp; Minneapolis, Minnesota &nbsp; | &nbsp; <a href="#top">Back to top</a></p>
     </div>
   </footer>
 
